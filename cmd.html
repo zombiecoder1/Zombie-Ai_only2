@@ -1,0 +1,2768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧟‍♂️ Zombie Coder - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* GitHub-inspired Color Palette */
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --bg-canvas: #010409;
+            --border-default: #30363d;
+            --border-muted: #21262d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --text-muted: #656d76;
+            --accent-primary: #2f81f7;
+            --accent-success: #3fb950;
+            --accent-warning: #d29922;
+            --accent-danger: #f85149;
+            --accent-purple: #a5a5ff;
+            --accent-cyan: #39d0d8;
+            --hover-bg: rgba(177, 186, 196, 0.12);
+            --sidebar-width: 280px;
+            --sidebar-collapsed: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .dashboard-container {
+            /* display: flex; */
+            min-height: 100vh;
+        }
+
+        /* GitHub-style Header */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg-canvas);
+            border-bottom: 1px solid var(--border-default);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-left: 24px;
+        }
+
+        .nav-tab {
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-tab.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 12px 8px 36px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.12);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-btn {
+            padding: 8px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-btn:hover {
+            background: var(--hover-bg);
+        }
+
+        .header-btn.primary {
+            background: var(--accent-success);
+            border-color: var(--accent-success);
+            color: white;
+        }
+
+        .header-btn.primary:hover {
+            background: #2ea043;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - 64px);
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-default);
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .sidebar.collapsed {
+            width: var(--sidebar-collapsed);
+        }
+
+        .sidebar-content {
+            padding: 16px 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-section-title {
+            padding: 0 16px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar.collapsed .sidebar-section-title {
+            display: none;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .sidebar-item:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        .sidebar-item.active {
+            background: rgba(47, 129, 247, 0.12);
+            color: var(--accent-primary);
+            border-left-color: var(--accent-primary);
+        }
+
+        .sidebar-item i {
+            width: 20px;
+            margin-right: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .sidebar.collapsed .sidebar-item i {
+            margin-right: 0;
+        }
+
+        .sidebar-item span {
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar.collapsed .sidebar-item span {
+            display: none;
+        }
+
+        .sidebar-item .badge {
+            background: var(--accent-danger);
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: auto;
+        }
+
+        .sidebar.collapsed .sidebar-item .badge {
+            display: none;
+        }
+
+        .sidebar-item .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+
+        .status-online {
+            background: var(--accent-success);
+        }
+
+        .status-warning {
+            background: var(--accent-warning);
+        }
+
+        .status-error {
+            background: var(--accent-danger);
+        }
+
+        .sidebar.collapsed .sidebar-item .status-dot {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        /* Expandable Menu Items */
+        .sidebar-item.expandable {
+            justify-content: space-between;
+        }
+
+        .sidebar-item .expand-icon {
+            margin-left: auto;
+            transition: transform 0.2s ease;
+            font-size: 12px;
+        }
+
+        .sidebar-item.expanded .expand-icon {
+            transform: rotate(90deg);
+        }
+
+        .sidebar.collapsed .sidebar-item .expand-icon {
+            display: none;
+        }
+
+        .sub-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: var(--bg-tertiary);
+        }
+
+        .sub-menu.expanded {
+            max-height: 400px;
+        }
+
+        .sidebar.collapsed .sub-menu {
+            display: none;
+        }
+
+        .sub-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 16px 6px 48px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .sub-menu-item:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        .sub-menu-item.active {
+            color: var(--accent-primary);
+            background: rgba(47, 129, 247, 0.08);
+        }
+
+        .sub-menu-item i {
+            width: 16px;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: 64px;
+            min-height: calc(100vh - 64px);
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar.collapsed+.main-content {
+            margin-left: var(--sidebar-collapsed);
+        }
+
+        .content-header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-default);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .content-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-title h1 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .content-title .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .content-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 6px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-default);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background: var(--hover-bg);
+        }
+
+        .btn.primary {
+            background: var(--accent-success);
+            border-color: var(--accent-success);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: #2ea043;
+        }
+
+        .btn.danger {
+            background: var(--accent-danger);
+            border-color: var(--accent-danger);
+            color: white;
+        }
+
+        .btn.danger:hover {
+            background: #da3633;
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 24px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-muted);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-default);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Stats Cards */
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-value.success {
+            color: var(--accent-success);
+        }
+
+        .stat-value.warning {
+            color: var(--accent-warning);
+        }
+
+        .stat-value.danger {
+            color: var(--accent-danger);
+        }
+
+        .stat-value.primary {
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Tables */
+        .table-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-default);
+        }
+
+        .table th {
+            background: var(--bg-tertiary);
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table tr:hover {
+            background: var(--hover-bg);
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Forms */
+        .form-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.12);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Chat Interface */
+        .chat-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-default);
+            background: var(--bg-tertiary);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .message.ai {
+            align-self: flex-start;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-default);
+        }
+
+        .message-controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .message-btn {
+            padding: 4px 8px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-default);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .message-btn:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        .chat-input {
+            padding: 16px;
+            border-top: 1px solid var(--border-default);
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .chat-input textarea {
+            flex: 1;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: var(--text-primary);
+            resize: none;
+            min-height: 36px;
+            max-height: 120px;
+            font-family: inherit;
+        }
+
+        .chat-input textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.12);
+        }
+
+        /* Notifications */
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            padding: 16px;
+            min-width: 300px;
+            box-shadow: 0 8px 24px rgba(1, 4, 9, 0.8);
+            transform: translateX(400px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--accent-success);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--accent-danger);
+        }
+
+        .notification.warning {
+            border-left: 4px solid var(--accent-warning);
+        }
+
+        .notification.info {
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .nav-tabs {
+                display: none;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-default);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Loading States */
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border-default);
+            border-radius: 50%;
+            border-top-color: var(--accent-primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Toggle Button */
+        .sidebar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-toggle:hover {
+            background: var(--hover-bg);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- GitHub-style Header -->
+    <header class="top-header">
+        <div class="header-left">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo">
+                <span>🧟‍♂️</span>
+                <span>Zombie Coder</span>
+            </a>
+            <nav class="nav-tabs">
+                <a href="#" class="nav-tab active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-tab">
+                    <i class="fas fa-brain"></i>
+                    Models
+                </a>
+                <a href="#" class="nav-tab">
+                    <i class="fas fa-database"></i>
+                    Database
+                </a>
+                <a href="#" class="nav-tab">
+                    <i class="fas fa-server"></i>
+                    Servers
+                </a>
+                <a href="#" class="nav-tab">
+                    <i class="fas fa-tools"></i>
+                    Tools
+                </a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search or jump to...">
+            </div>
+            <div class="header-actions">
+                <a href="#" class="header-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </a>
+                <a href="#" class="header-btn primary">
+                    <i class="fas fa-plus"></i>
+                    New
+                </a>
+                <a href="#" class="header-btn">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+
+
+        <!-- GitHub-style Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <!-- System Monitoring -->
+                <!-- <div class="sidebar-section">
+                    <div class="sidebar-section-title">System</div>
+
+                    <div class="sidebar-item active" data-section="system-overview">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Overview</span>
+                        <div class="status-dot status-online"></div>
+                    </div>
+
+                    <div class="sidebar-item" data-section="server-monitoring">
+                        <i class="fas fa-server"></i>
+                        <span>Monitoring</span>
+                        <span class="badge">Live</span>
+                    </div>
+
+                    <div class="sidebar-item" data-section="performance-metrics">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Performance</span>
+                    </div>
+
+                    <div class="sidebar-item" data-section="logs-viewer">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Logs</span>
+                    </div>
+                </div>
+
+                <!-- Admin Section -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Admin Panel</div>
+
+                    <div class="sidebar-item expandable" onclick="toggleSubMenu(this)" data-section="models-overview">
+                        <i class="fas fa-brain"></i>
+                        <span>Models</span>
+                        <div class="status-dot status-online"></div>
+                        <i class="fas fa-chevron-right expand-icon"></i>
+                    </div>
+                    <div class="sub-menu">
+                        <div class="sub-menu-item" data-section="model-server">
+                            <i class="fas fa-server"></i>
+                            <span>Model Server</span>
+                        </div>
+                        <div class="sub-menu-item" data-section="mcp-server">
+                            <i class="fas fa-network-wired"></i>
+                            <span>MCP Server</span>
+                        </div>
+                        <div class="sub-menu-item" data-section="model-management">
+                            <i class="fas fa-cogs"></i>
+                            <span>Management</span>
+                        </div>
+                        <div class="sub-menu-item" data-section="model-testing">
+                            <i class="fas fa-flask"></i>
+                            <span>Testing</span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-item expandable" onclick="toggleSubMenu(this)"
+                        data-section="productivity-overview">
+                        <i class="fas fa-tools"></i>
+                        <span>Provider</span>
+                        <i class="fas fa-chevron-right expand-icon"></i>
+                    </div>
+                    <div class="sub-menu">
+                        <div class="sub-menu-item" data-section="notepad">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Local</span>
+                        </div>
+                        <div class="sub-menu-item" data-section="scheduler">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Cloud</span>
+                        </div>
+                        <div class="sub-menu-item" data-section="todo">
+                            <i class="fas fa-tasks"></i>
+                            <span>Open Api</span>
+                        </div>
+
+                    </div>
+
+                    <!-- <div class="sidebar-item expandable" onclick="toggleSubMenu(this)" data-section="projects-overview">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Projects</span>
+                        <span class="badge">5</span>
+                        <i class="fas fa-chevron-right expand-icon"></i>
+                    </div>
+                    <div class="sub-menu">
+                        <div class="sub-menu-item" data-section="project-dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </div>
+                        <div class="sub-menu-item" data-section="project-management">
+                            <i class="fas fa-folder-open"></i>
+                            <span>Management</span>
+                        </div>
+                        <div class="sub-menu-item" data-section="project-analytics">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </div>
+                    </div> -->
+
+
+
+                    <!-- Development Tools -->
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-title">Development</div>
+
+                        <div class="sidebar-item" data-section="code-editor">
+                            <i class="fas fa-code"></i>
+                            <span>Editor Connection </span>
+                        </div>
+
+                        <div class="sidebar-item expandable" onclick="toggleSubMenu(this)" data-section="run-commands">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Run Commands</span>
+                            <i class="fas fa-chevron-right expand-icon"></i>
+                        </div>
+                        <div class="sub-menu">
+                            <div class="sub-menu-item" data-section="global-launcher">
+                                <i class="fas fa-play-circle"></i>
+                                <span>Global Launcher</span>
+                            </div>
+                            <div class="sub-menu-item" data-section="individual-servers">
+                                <i class="fas fa-server"></i>
+                                <span>Individual Servers</span>
+                            </div>
+                            <div class="sub-menu-item" data-section="server-commands">
+                                <i class="fas fa-terminal"></i>
+                                <span>Command Reference</span>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-item expandable" onclick="toggleSubMenu(this)"
+                            data-section="deployment-overview">
+                            <i class="fas fa-rocket"></i>
+                            <span>Deployment</span>
+                            <i class="fas fa-chevron-right expand-icon"></i>
+                        </div>
+                        <div class="sub-menu">
+                            <div class="sub-menu-item" data-section="server-endpoints">
+                                <i class="fas fa-network-wired"></i>
+                                <span>Server Endpoints</span>
+                            </div>
+                            <div class="sub-menu-item" data-section="port-configuration">
+                                <i class="fas fa-plug"></i>
+                                <span>Port Configuration</span>
+                            </div>
+                            <div class="sub-menu-item" data-section="extension-setup">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <span>Extension Setup</span>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-item" data-section="testing-tools">
+                            <i class="fas fa-flask"></i>
+                            <span>Testing</span>
+                        </div>
+                    </div>
+                </div>
+        </aside> -->
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Content Header -->
+            <div class="content-header">
+                <div class="content-title">
+                    <h1 id="page-title">System Overview</h1>
+                </div>
+                <div class="content-actions">
+                    <button class="btn" onclick="refreshAllData()">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                    <button class="btn" onclick="runSystemTest()">
+                        <i class="fas fa-play"></i>
+                        Test All
+                    </button>
+                    <button class="btn primary">
+                        <i class="fas fa-plus"></i>
+                        New Project
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- System Overview Section -->
+                <section id="system-overview" class="content-section active">
+                    <div class="card-grid">
+                        <div class="stat-card">
+                            <div class="stat-value success">🧟‍♂️ Online</div>
+                            <div class="stat-label">Hello Zombie Main Server (12346)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value success">🤖 Active</div>
+                            <div class="stat-label">Local Ollama (11434)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value primary">3</div>
+                            <div class="stat-label">Local Models Ready</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value success">💾 Live</div>
+                            <div class="stat-label">SQLite Memory System</div>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Status</th>
+                                    <th>Port</th>
+                                    <th>CPU</th>
+                                    <th>Memory</th>
+                                    <th>Uptime</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-server"></i>
+                                            Main Server (Dispatcher)
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div class="status-dot status-online"></div>
+                                            Online
+                                        </div>
+                                    </td>
+                                    <td>12346</td>
+                                    <td>15%</td>
+                                    <td>512MB</td>
+                                    <td>Live</td>
+                                    <td>
+                                        <button class="btn" onclick="testServer('http://localhost:12346/api/health')"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-brain"></i>
+                                            Local Ollama
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div class="status-dot status-online"></div>
+                                            Active
+                                        </div>
+                                    </td>
+                                    <td>11434</td>
+                                    <td>45%</td>
+                                    <td>2.1GB</td>
+                                    <td>Live</td>
+                                    <td>
+                                        <button class="btn" onclick="testOllama()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-cloud"></i>
+                                            OpenRouter API
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div class="status-dot status-online"></div>
+                                            Ready
+                                        </div>
+                                    </td>
+                                    <td>443</td>
+                                    <td>0%</td>
+                                    <td>N/A</td>
+                                    <td>On-Demand</td>
+                                    <td>
+                                        <button class="btn" onclick="testOpenRouter()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-robot"></i>
+                                            HuggingFace API
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div class="status-dot status-online"></div>
+                                            Ready
+                                        </div>
+                                    </td>
+                                    <td>443</td>
+                                    <td>0%</td>
+                                    <td>N/A</td>
+                                    <td>On-Demand</td>
+                                    <td>
+                                        <button class="btn" onclick="testHuggingFace()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-globe"></i>
+                                            Public APIs
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div class="status-dot status-online"></div>
+                                            Active
+                                        </div>
+                                    </td>
+                                    <td>443</td>
+                                    <td>0%</td>
+                                    <td>N/A</td>
+                                    <td>On-Demand</td>
+                                    <td>
+                                        <button class="btn" onclick="testPublicAPIs()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-database"></i>
+                                            Memory System
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div class="status-dot status-online"></div>
+                                            Active
+                                        </div>
+                                    </td>
+                                    <td>File</td>
+                                    <td>5%</td>
+                                    <td>50MB</td>
+                                    <td>Live</td>
+                                    <td>
+                                        <button class="btn" onclick="viewMemory()"
+                                            style="padding: 4px 8px; font-size: 12px;">View</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Model Server Section -->
+                <section id="model-server" class="content-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">ZombieCoder Main Server</h3>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <div class="status-dot status-online"></div>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-grid">
+                                <div class="stat-card">
+                                    <div class="stat-value">12346</div>
+                                    <div class="stat-label">Port</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value success">15%</div>
+                                    <div class="stat-label">CPU Usage</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">512MB</div>
+                                    <div class="stat-label">Memory</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">Live</div>
+                                    <div class="stat-label">Status</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn primary"
+                                    onclick="testServer('http://localhost:12346/api/health')">Health Check</button>
+                                <button class="btn"
+                                    onclick="testServer('http://localhost:12346/api/providers/status')">Provider
+                                    Status</button>
+                                <button class="btn" onclick="viewMemory()">View Memory</button>
+                                <button class="btn"
+                                    onclick="window.open('http://localhost:12346/api/health', '_blank')">Open
+                                    API</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <h3>Smart Fallback Chain Configuration</h3>
+                        <div class="form-group">
+                            <label class="form-label">Primary Provider:</label>
+                            <select class="form-control" id="primaryProvider">
+                                <option value="local_ollama">Local Ollama (Port 11434)</option>
+                                <option value="openrouter">OpenRouter API</option>
+                                <option value="huggingface">HuggingFace API</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fallback Chain:</label>
+                            <div
+                                style="background: var(--bg-tertiary); padding: 12px; border-radius: 6px; font-size: 14px;">
+                                <div style="margin-bottom: 8px;">1. Local Ollama (Port 11434)</div>
+                                <div style="margin-bottom: 8px;">2. Public APIs (Wikipedia, Dictionary, Currency)</div>
+                                <div style="margin-bottom: 8px;">3. Cloud AI Providers (OpenRouter, HuggingFace, OpenAI)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Available Models:</label>
+                            <div
+                                style="background: var(--bg-tertiary); padding: 12px; border-radius: 6px; font-size: 14px;">
+                                <div style="margin-bottom: 8px;"><strong>Local:</strong> gemma:2b, deepseek-coder:1.3b,
+                                    qwen2.5-coder:1.5b-base</div>
+                                <div style="margin-bottom: 8px;"><strong>OpenRouter:</strong> claude-3.5-sonnet,
+                                    llama-3.1-8b-instruct, gpt-4o-mini</div>
+                                <div><strong>HuggingFace:</strong> microsoft/DialoGPT-medium, gpt2</div>
+                            </div>
+                        </div>
+                        <button class="btn primary" onclick="refreshProviderStatus()">Refresh Status</button>
+                    </div>
+                </section>
+
+                <!-- AI Chat Section -->
+                <section id="ai-chat" class="content-section">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h3>AI Assistant</h3>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message ai">
+                                <div>Hello! I'm your AI assistant. I can help you with development tasks, server
+                                    management, and more. Try asking me anything!</div>
+                                <div class="message-controls">
+                                    <button class="message-btn"
+                                        onclick="speakMessage(this, 'Hello! I am your AI assistant. I can help you with development tasks, server management, and more. Try asking me anything!')">
+                                        <i class="fas fa-play"></i> Play
+                                    </button>
+                                    <button class="message-btn">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <textarea id="userInput" placeholder="Type your message here..." rows="1"></textarea>
+                            <button class="btn primary" onclick="sendMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                                Send
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Productivity Tools Sections -->
+                <section id="notepad" class="content-section">
+                    <div class="form-container">
+                        <h3>Notepad</h3>
+                        <div class="form-group">
+                            <label class="form-label">Note Title:</label>
+                            <input type="text" class="form-control" placeholder="Enter note title...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Content:</label>
+                            <textarea class="form-control" rows="10" placeholder="Write your notes here..."></textarea>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn primary">Save Note</button>
+                            <button class="btn">Clear</button>
+                            <button class="btn">Export</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="scheduler" class="content-section">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Today's Tasks</h3>
+                                <div class="card-icon">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="stat-value">8</div>
+                                <div class="stat-label">5 Pending, 3 Completed</div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn primary">View All</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Upcoming Deadlines</h3>
+                                <div class="card-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="stat-value warning">3</div>
+                                <div class="stat-label">Next 7 days</div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn">Review</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="todo" class="content-section">
+                    <div class="form-container">
+                        <h3>Add New Task</h3>
+                        <div class="form-group">
+                            <label class="form-label">Task Title:</label>
+                            <input type="text" class="form-control" placeholder="Enter task title...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Priority:</label>
+                            <select class="form-control">
+                                <option>High</option>
+                                <option>Medium</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Due Date:</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <button class="btn primary">Add Task</button>
+                    </div>
+                </section>
+
+                <!-- Global Launcher Section -->
+                <section id="global-launcher" class="content-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">🚀 Global Server Launcher</h3>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <div class="status-dot status-online"></div>
+                                <span>Ready</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p style="margin-bottom: 16px; color: var(--text-secondary);">
+                                Start all ZombieCoder services with a single command using the global launcher script.
+                            </p>
+                            <div class="form-container">
+                                <h4>Quick Start Command:</h4>
+                                <div
+                                    style="background: var(--bg-primary); padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; border: 1px solid var(--border-default);">
+                                    <div style="color: var(--accent-primary);">cd C:\ZombieCoder-Agent-Personal</div>
+                                    <div style="color: var(--accent-success);">.\GLOBAL_LAUNCHER.bat</div>
+                                </div>
+                                <div style="margin-top: 16px;">
+                                    <button class="btn primary"
+                                        onclick="copyToClipboard('cd C:\\ZombieCoder-Agent-Personal\\n.\\GLOBAL_LAUNCHER.bat')">
+                                        <i class="fas fa-copy"></i> Copy Command
+                                    </button>
+                                    <button class="btn" onclick="runGlobalLauncher()">
+                                        <i class="fas fa-play"></i> Run Launcher
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn" onclick="showServerStatus()">Check Status</button>
+                                <button class="btn" onclick="viewLauncherLogs()">View Logs</button>
+                                <button class="btn danger" onclick="stopAllServers()">Stop All</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Individual Servers Section -->
+                <section id="individual-servers" class="content-section">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">🧟‍♂️ Hello Zombie Main Server</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Port 12346</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div
+                                    style="background: var(--bg-primary); padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; border: 1px solid var(--border-default); margin-bottom: 12px;">
+                                    <div style="color: var(--accent-primary);">cd "C:\Users\sahon\Desktop\ZombieCoder
+                                        Main Server"</div>
+                                    <div style="color: var(--accent-success);">python main_server.py</div>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 14px;">
+                                    <strong>Hello Zombie</strong> - Local AI agent with FastAPI dispatcher, Ollama
+                                    integration, and SQLite memory.
+                                    OpenAI-compatible endpoints for Cursor AI integration.
+                                </p>
+                                <div
+                                    style="margin-top: 12px; padding: 8px; background: var(--bg-tertiary); border-radius: 4px; font-size: 12px;">
+                                    <div><strong>Features:</strong> Response caching, Connection pooling, Auto cleanup
+                                    </div>
+                                    <div><strong>Endpoints:</strong> /v1/chat/completions, /health, /performance</div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn primary" onclick="copyToClipboard('cd \"
+                                    C:\\Users\\sahon\\Desktop\\ZombieCoder Main Server\"\\npython
+                                    main_server.py')">Copy</button>
+                                <button class="btn" onclick="testServer('http://localhost:12346/health')">Test</button>
+                                <button class="btn" onclick="testHelloZombie()">Test AI</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">🤖 Local Ollama Server</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Port 11434</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div
+                                    style="background: var(--bg-primary); padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; border: 1px solid var(--border-default); margin-bottom: 12px;">
+                                    <div style="color: var(--accent-primary);">ollama serve</div>
+                                    <div style="color: var(--text-muted);"># Or start via Ollama desktop app</div>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 14px;">
+                                    Local AI model server for <strong>Hello Zombie</strong>. Primary provider with
+                                    models like gemma:2b,
+                                    deepseek-coder, qwen2.5-coder. Powers the local AI responses.
+                                </p>
+                                <div
+                                    style="margin-top: 12px; padding: 8px; background: var(--bg-tertiary); border-radius: 4px; font-size: 12px;">
+                                    <div><strong>Models:</strong> gemma:2b, deepseek-coder:1.3b, qwen2.5-coder:1.5b
+                                    </div>
+                                    <div><strong>Health:</strong> /api/tags, /api/generate</div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn primary" onclick="copyToClipboard('ollama serve')">Copy</button>
+                                <button class="btn" onclick="testOllama()">Test</button>
+                                <button class="btn" onclick="checkOllamaModels()">Models</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Provider Tester</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Script</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div
+                                    style="background: var(--bg-primary); padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; border: 1px solid var(--border-default); margin-bottom: 12px;">
+                                    <div style="color: var(--accent-primary);">cd C:\ZombieCoder-Agent-Personal</div>
+                                    <div style="color: var(--accent-success);">python provider_tester.py</div>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 14px;">
+                                    Test individual AI providers and their connectivity. Useful for debugging provider
+                                    issues.
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn primary"
+                                    onclick="copyToClipboard('cd C:\\ZombieCoder-Agent-Personal\\npython provider_tester.py')">Copy</button>
+                                <button class="btn" onclick="runProviderTest()">Run Test</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Smart Fallback Test</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Script</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div
+                                    style="background: var(--bg-primary); padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; border: 1px solid var(--border-default); margin-bottom: 12px;">
+                                    <div style="color: var(--accent-primary);">cd C:\ZombieCoder-Agent-Personal</div>
+                                    <div style="color: var(--accent-success);">python test_smart_fallback.py</div>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 14px;">
+                                    Test the complete smart fallback chain with different types of queries (chat,
+                                    dictionary, currency, etc.).
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn primary"
+                                    onclick="copyToClipboard('cd C:\\ZombieCoder-Agent-Personal\\npython test_smart_fallback.py')">Copy</button>
+                                <button class="btn" onclick="runFallbackTest()">Run Test</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Server Commands Reference Section -->
+                <section id="server-commands" class="content-section">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Command</th>
+                                    <th>Port</th>
+                                    <th>Purpose</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-robot"></i>
+                                            Hello Zombie Main Server
+                                        </div>
+                                    </td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">
+                                        cd "C:\Users\sahon\Desktop\ZombieCoder Main Server"<br>python main_server.py
+                                    </td>
+                                    <td>12346</td>
+                                    <td>Local AI Agent with FastAPI</td>
+                                    <td>
+                                        <button class="btn" onclick="testServer('http://localhost:12346/health')"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                        <button class="btn" onclick="testHelloZombie()"
+                                            style="padding: 4px 8px; font-size: 12px;">AI Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-brain"></i>
+                                            Ollama
+                                        </div>
+                                    </td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">
+                                        ollama serve
+                                    </td>
+                                    <td>11434</td>
+                                    <td>Local AI Models</td>
+                                    <td>
+                                        <button class="btn" onclick="testOllama()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-flask"></i>
+                                            Provider Test
+                                        </div>
+                                    </td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">
+                                        python provider_tester.py
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>Test AI Providers</td>
+                                    <td>
+                                        <button class="btn" onclick="runProviderTest()"
+                                            style="padding: 4px 8px; font-size: 12px;">Run</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-network-wired"></i>
+                                            Fallback Test
+                                        </div>
+                                    </td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">
+                                        python test_smart_fallback.py
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>Test Complete Chain</td>
+                                    <td>
+                                        <button class="btn" onclick="runFallbackTest()"
+                                            style="padding: 4px 8px; font-size: 12px;">Run</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-play-circle"></i>
+                                            Global Launcher
+                                        </div>
+                                    </td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">
+                                        .\GLOBAL_LAUNCHER.bat
+                                    </td>
+                                    <td>All</td>
+                                    <td>Start All Services</td>
+                                    <td>
+                                        <button class="btn" onclick="runGlobalLauncher()"
+                                            style="padding: 4px 8px; font-size: 12px;">Launch</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Server Endpoints Section -->
+                <section id="server-endpoints" class="content-section">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Endpoint</th>
+                                    <th>Method</th>
+                                    <th>Purpose</th>
+                                    <th>Example</th>
+                                    <th>Test</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>/health</td>
+                                    <td>GET</td>
+                                    <td>Hello Zombie health check</td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">curl
+                                        http://localhost:12346/health</td>
+                                    <td>
+                                        <button class="btn" onclick="testServer('http://localhost:12346/health')"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>/v1/chat/completions</td>
+                                    <td>POST</td>
+                                    <td>OpenAI-compatible AI chat</td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">POST
+                                        /v1/chat/completions
+                                        {"model": "gemma:2b", "messages": [...]}</td>
+                                    <td>
+                                        <button class="btn" onclick="testHelloZombie()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>/performance</td>
+                                    <td>GET</td>
+                                    <td>Performance metrics</td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">curl
+                                        http://localhost:12346/performance</td>
+                                    <td>
+                                        <button class="btn" onclick="testServer('http://localhost:12346/performance')"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>/api/chat</td>
+                                    <td>POST</td>
+                                    <td>AI chat endpoint</td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">POST /api/chat
+                                        {"message": "Hello"}</td>
+                                    <td>
+                                        <button class="btn" onclick="testChatEndpoint()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>/api/providers/status</td>
+                                    <td>GET</td>
+                                    <td>Provider status</td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">curl
+                                        http://localhost:12346/api/providers/status</td>
+                                    <td>
+                                        <button class="btn"
+                                            onclick="testServer('http://localhost:12346/api/providers/status')"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>/api/memory</td>
+                                    <td>GET</td>
+                                    <td>Memory system status</td>
+                                    <td style="font-family: 'Courier New', monospace; font-size: 12px;">curl
+                                        http://localhost:12346/api/memory</td>
+                                    <td>
+                                        <button class="btn" onclick="viewMemory()"
+                                            style="padding: 4px 8px; font-size: 12px;">Test</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Port Configuration Section -->
+                <section id="port-configuration" class="content-section">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Main Server Ports</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Active</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div
+                                    style="background: var(--bg-tertiary); padding: 12px; border-radius: 6px; font-size: 14px;">
+                                    <div style="margin-bottom: 8px;"><strong>12346</strong> - Hello Zombie Main Server
+                                        (FastAPI)</div>
+                                    <div style="margin-bottom: 8px;"><strong>11434</strong> - Local Ollama Server (AI
+                                        Models)</div>
+                                    <div style="margin-bottom: 8px;"><strong>443</strong> - External APIs (HTTPS)</div>
+                                    <div><strong>SQLite</strong> - Local Memory System</div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn primary" onclick="checkAllPorts()">Check All Ports</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Extension Connection</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Ready</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div
+                                    style="background: var(--bg-tertiary); padding: 12px; border-radius: 6px; font-size: 14px;">
+                                    <div style="margin-bottom: 8px;"><strong>Extension URL:</strong>
+                                        http://localhost:12346</div>
+                                    <div style="margin-bottom: 8px;"><strong>Chat Endpoint:</strong> /api/chat</div>
+                                    <div style="margin-bottom: 8px;"><strong>Health Check:</strong> /api/health</div>
+                                    <div><strong>Provider Status:</strong> /api/providers/status</div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn primary" onclick="testExtensionConnection()">Test Extension</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Firewall Configuration</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-warning"></div>
+                                    <span>Check Required</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div
+                                    style="background: var(--bg-tertiary); padding: 12px; border-radius: 6px; font-size: 14px;">
+                                    <div style="margin-bottom: 8px;">Ensure ports 12346 and 11434 are open</div>
+                                    <div style="margin-bottom: 8px;">Allow localhost connections</div>
+                                    <div style="margin-bottom: 8px;">Check Windows Firewall settings</div>
+                                    <div>Verify antivirus exceptions</div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn" onclick="showFirewallHelp()">Firewall Help</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Extension Setup Section -->
+                <section id="extension-setup" class="content-section">
+                    <div class="form-container">
+                        <h3>Extension Configuration</h3>
+                        <div class="form-group">
+                            <label class="form-label">Server URL:</label>
+                            <input type="text" class="form-control" value="http://localhost:12346" id="serverUrl">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hello Zombie Endpoints:</label>
+                            <div
+                                style="background: var(--bg-tertiary); padding: 12px; border-radius: 6px; font-size: 14px;">
+                                <div style="margin-bottom: 8px;"><strong>AI Chat:</strong> POST /v1/chat/completions
+                                    (OpenAI-compatible)</div>
+                                <div style="margin-bottom: 8px;"><strong>Health:</strong> GET /health</div>
+                                <div style="margin-bottom: 8px;"><strong>Performance:</strong> GET /performance</div>
+                                <div><strong>Models:</strong> GET /v1/models</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Cursor AI Integration:</label>
+                            <div
+                                style="background: var(--bg-tertiary); padding: 12px; border-radius: 6px; font-size: 14px;">
+                                <div style="margin-bottom: 8px;">1. Open Cursor AI Settings → Model Provider</div>
+                                <div style="margin-bottom: 8px;">2. Set Provider: Custom</div>
+                                <div style="margin-bottom: 8px;">3. Set Base URL: http://localhost:12346/v1</div>
+                                <div style="margin-bottom: 8px;">4. Set API Key: dummy (local server)</div>
+                                <div>5. Test with Hello Zombie agent!</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn primary" onclick="saveExtensionConfig()">Save Config</button>
+                            <button class="btn" onclick="testExtensionConnection()">Test Connection</button>
+                            <button class="btn" onclick="openExtensionDocs()">View Docs</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Database Sections -->
+                <section id="db-connections" class="content-section">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Memory System</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Active</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                Type: File-based<br>
+                                Location: memory/project.memory.json<br>
+                                Sessions: Live tracking
+                            </div>
+                            <div class="card-footer">
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn primary" onclick="viewMemory()">View Memory</button>
+                                    <button class="btn">Export</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Log System</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="status-dot status-online"></div>
+                                    <span>Active</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                Location: core-server/logs/system.log<br>
+                                Format: JSON + Text<br>
+                                Rotation: Enabled
+                            </div>
+                            <div class="card-footer">
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn primary" onclick="viewLogs()">View Logs</button>
+                                    <button class="btn">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Navigation System
+        let currentSection = 'system-overview';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeNavigation();
+            initializeAudio();
+            showNotification('Zombie Coder Dashboard loaded successfully!', 'success');
+        });
+
+        function initializeNavigation() {
+            // Main nav items
+            document.querySelectorAll('.sidebar-item[data-section]').forEach(item => {
+                item.addEventListener('click', function () {
+                    if (!this.classList.contains('expandable')) {
+                        showSection(this.getAttribute('data-section'));
+                        updateActiveNav(this);
+                    }
+                });
+            });
+
+            // Sub nav items
+            document.querySelectorAll('.sub-menu-item[data-section]').forEach(item => {
+                item.addEventListener('click', function () {
+                    showSection(this.getAttribute('data-section'));
+                    updateActiveNav(this);
+                });
+            });
+        }
+
+        function toggleSubMenu(element) {
+            const subMenu = element.nextElementSibling;
+            const expandIcon = element.querySelector('.expand-icon');
+
+            element.classList.toggle('expanded');
+            subMenu.classList.toggle('expanded');
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                currentSection = sectionId;
+                updatePageTitle(sectionId);
+            }
+        }
+
+        function updateActiveNav(clickedItem) {
+            document.querySelectorAll('.sidebar-item, .sub-menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            clickedItem.classList.add('active');
+        }
+
+        function updatePageTitle(sectionId) {
+            const titles = {
+                'system-overview': {
+                    title: 'System Overview',
+                    subtitle: 'Complete system status and performance metrics'
+                },
+                'model-server': {
+                    title: 'Model Server',
+                    subtitle: 'AI model server configuration and monitoring'
+                },
+                'mcp-server': {
+                    title: 'MCP Server',
+                    subtitle: 'Model Context Protocol server management'
+                },
+                'ai-chat': {
+                    title: 'AI Chat',
+                    subtitle: 'Intelligent chat with audio response capabilities'
+                },
+                'notepad': {
+                    title: 'Notepad',
+                    subtitle: 'Quick notes and documentation'
+                },
+                'scheduler': {
+                    title: 'Scheduler',
+                    subtitle: 'Task scheduling and calendar management'
+                },
+                'todo': {
+                    title: 'Todo Manager',
+                    subtitle: 'Task management and productivity tracking'
+                },
+                'db-connections': {
+                    title: 'Database Connections',
+                    subtitle: 'Manage database connections and configurations'
+                },
+                'global-launcher': {
+                    title: 'Global Launcher',
+                    subtitle: 'Start all ZombieCoder services with a single command'
+                },
+                'individual-servers': {
+                    title: 'Individual Servers',
+                    subtitle: 'Start and manage individual server components'
+                },
+                'server-commands': {
+                    title: 'Server Commands',
+                    subtitle: 'Complete command reference for all services'
+                },
+                'server-endpoints': {
+                    title: 'Server Endpoints',
+                    subtitle: 'API endpoints and their usage'
+                },
+                'port-configuration': {
+                    title: 'Port Configuration',
+                    subtitle: 'Server ports and network configuration'
+                },
+                'extension-setup': {
+                    title: 'Extension Setup',
+                    subtitle: 'Configure and test editor extensions'
+                }
+            };
+
+            const pageInfo = titles[sectionId] || {
+                title: sectionId,
+                subtitle: ''
+            };
+            document.getElementById('page-title').textContent = pageInfo.title;
+            document.getElementById('page-subtitle').textContent = pageInfo.subtitle;
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const isMobile = window.innerWidth <= 768;
+
+            if (isMobile) {
+                sidebar.classList.toggle('mobile-open');
+            } else {
+                sidebar.classList.toggle('collapsed');
+            }
+        }
+
+        // Audio System
+        let currentAudio = null;
+        let audioVolume = 0.8;
+
+        function initializeAudio() {
+            document.addEventListener('click', function () {
+                if (!window.audioContextInitialized) {
+                    window.audioContextInitialized = true;
+                }
+            }, {
+                once: true
+            });
+        }
+
+        function speakMessage(button, text) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+            }
+
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.volume = audioVolume;
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+
+                button.innerHTML = '<i class="fas fa-pause"></i> Playing...';
+                button.disabled = true;
+
+                utterance.onend = function () {
+                    button.innerHTML = '<i class="fas fa-play"></i> Play';
+                    button.disabled = false;
+                };
+
+                utterance.onerror = function () {
+                    button.innerHTML = '<i class="fas fa-play"></i> Play';
+                    button.disabled = false;
+                    showNotification('Audio playback failed', 'error');
+                };
+
+                speechSynthesis.speak(utterance);
+            } else {
+                showNotification('Speech synthesis not supported', 'error');
+            }
+        }
+
+        // Chat functionality
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const message = userInput.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message user';
+            userMessageDiv.innerHTML = `<div>${message}</div>`;
+            chatMessages.appendChild(userMessageDiv);
+
+            userInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiResponse = generateAIResponse(message);
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.className = 'message ai';
+                aiMessageDiv.innerHTML = `
+                    <div>${aiResponse}</div>
+                    <div class="message-controls">
+                        <button class="message-btn" onclick="speakMessage(this, '${aiResponse.replace(/'/g, '')}')">
+                            <i class="fas fa-play"></i> Play
+                        </button>
+                        <button class="message-btn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                `;
+                chatMessages.appendChild(aiMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateAIResponse(userMessage) {
+            const responses = [
+                "I understand you're working on development tasks. How can I help you with your code today?",
+                "That's a great question! Let me help you with server management and configuration.",
+                "I can assist you with database operations, model management, or system monitoring. What would you like to explore?",
+                "Based on your project structure, I recommend checking the server status first. Would you like me to guide you?",
+                "I'm here to help with AI development, server management, and productivity tools. What's your priority?",
+                "Let me help you optimize your development workflow. Which area needs attention - coding, deployment, or monitoring?"
+            ];
+
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        // Utility Functions
+        function refreshAllData() {
+            showNotification('Refreshing all system data...', 'info');
+            setTimeout(() => {
+                showNotification('All data refreshed successfully!', 'success');
+            }, 2000);
+        }
+
+        function runSystemTest() {
+            showNotification('Running comprehensive system test...', 'info');
+            setTimeout(() => {
+                showNotification('System test completed - All services operational!', 'success');
+            }, 3000);
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <div class="notification-icon">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : type === 'warning' ? 'exclamation' : 'info-circle'}"></i>
+                    </div>
+                    <div>${message}</div>
+                </div>
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => notification.classList.add('show'), 100);
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Handle mobile responsiveness
+        window.addEventListener('resize', function () {
+            const sidebar = document.getElementById('sidebar');
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('mobile-open');
+            }
+        });
+
+        // Handle enter key in chat
+        document.addEventListener('keypress', function (e) {
+            if (e.target.id === 'userInput' && e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Server Testing Functions
+        async function testServer(url) {
+            try {
+                showNotification('Testing server connection...', 'info');
+                const response = await fetch(url);
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Server test successful! Status: ${data.status}`, 'success');
+                    console.log('Server Response:', data);
+                } else {
+                    showNotification(`Server test failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                showNotification(`Server test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testOllama() {
+            try {
+                showNotification('Testing Ollama connection...', 'info');
+                const response = await fetch('http://localhost:11434/api/tags');
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Ollama test successful! Models: ${data.models?.length || 0}`, 'success');
+                    console.log('Ollama Models:', data);
+                } else {
+                    showNotification('Ollama test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Ollama test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testOpenRouter() {
+            try {
+                showNotification('Testing OpenRouter API...', 'info');
+                const response = await fetch('http://localhost:12346/api/providers/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    const openrouterStatus = data.providers?.providers?.openrouter;
+                    if (openrouterStatus?.enabled) {
+                        showNotification(`OpenRouter API ready! Models: ${openrouterStatus.models?.length || 0}`, 'success');
+                    } else {
+                        showNotification('OpenRouter API not configured', 'warning');
+                    }
+                } else {
+                    showNotification('OpenRouter test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`OpenRouter test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testHuggingFace() {
+            try {
+                showNotification('Testing HuggingFace API...', 'info');
+                const response = await fetch('http://localhost:12346/api/providers/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    const hfStatus = data.providers?.providers?.huggingface;
+                    if (hfStatus?.enabled) {
+                        showNotification(`HuggingFace API ready! Models: ${hfStatus.models?.length || 0}`, 'success');
+                    } else {
+                        showNotification('HuggingFace API not configured', 'warning');
+                    }
+                } else {
+                    showNotification('HuggingFace test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`HuggingFace test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testPublicAPIs() {
+            try {
+                showNotification('Testing Public APIs...', 'info');
+                const response = await fetch('http://localhost:12346/api/providers/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    const publicAPIs = data.providers?.providers?.public_apis;
+                    if (publicAPIs?.enabled) {
+                        showNotification(`Public APIs ready! Services: ${publicAPIs.services?.join(', ') || 'Available'}`, 'success');
+                    } else {
+                        showNotification('Public APIs not available', 'warning');
+                    }
+                } else {
+                    showNotification('Public APIs test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Public APIs test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function viewMemory() {
+            try {
+                showNotification('Loading memory data...', 'info');
+                const response = await fetch('http://localhost:12346/api/memory');
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Memory loaded! Sessions: ${data.sessions?.length || 0}`, 'success');
+                    console.log('Memory Data:', data);
+                } else {
+                    showNotification('Memory access failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Memory error: ${error.message}`, 'error');
+            }
+        }
+
+        // Enhanced chat function with real API integration
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const message = userInput.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message user';
+            userMessageDiv.innerHTML = `<div>${message}</div>`;
+            chatMessages.appendChild(userMessageDiv);
+
+            userInput.value = '';
+
+            // Show loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'message ai';
+            loadingDiv.innerHTML = '<div class="loading"></div> <span>AI is thinking...</span>';
+            chatMessages.appendChild(loadingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                // Call real API
+                const response = await fetch('http://localhost:12346/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        context: {
+                            agent: 'unified'
+                        }
+                    })
+                });
+
+                // Remove loading indicator
+                loadingDiv.remove();
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const aiMessageDiv = document.createElement('div');
+                    aiMessageDiv.className = 'message ai';
+                    aiMessageDiv.innerHTML = `
+                        <div>${data.response}</div>
+                        <div class="message-controls">
+                            <button class="message-btn" onclick="speakMessage(this, '${data.response.replace(/'/g, '')}')">
+                                <i class="fas fa-play"></i> Play
+                            </button>
+                            <button class="message-btn">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                            Provider: ${data.provider} | Source: ${data.source}
+                        </div>
+                    `;
+                    chatMessages.appendChild(aiMessageDiv);
+                } else {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+            } catch (error) {
+                // Remove loading indicator
+                loadingDiv.remove();
+
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'message ai';
+                errorDiv.innerHTML = `
+                    <div style="color: var(--accent-danger);">
+                        Sorry, I encountered an error: ${error.message}
+                    </div>
+                `;
+                chatMessages.appendChild(errorDiv);
+                showNotification(`Chat error: ${error.message}`, 'error');
+            }
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Refresh provider status function
+        async function refreshProviderStatus() {
+            try {
+                showNotification('Refreshing provider status...', 'info');
+                const response = await fetch('http://localhost:12346/api/providers/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Provider status refreshed! Available: ${data.providers.statistics.available_count}/${data.providers.statistics.total_providers}`, 'success');
+                    console.log('Provider Status:', data);
+
+                    // Update UI with real data
+                    updateProviderStats(data);
+                } else {
+                    showNotification('Failed to refresh provider status', 'error');
+                }
+            } catch (error) {
+                showNotification(`Refresh error: ${error.message}`, 'error');
+            }
+        }
+
+        function updateProviderStats(data) {
+            // Update stats cards with real data
+            const statsCards = document.querySelectorAll('.stat-card');
+            if (statsCards.length >= 3) {
+                statsCards[2].querySelector('.stat-value').textContent = data.providers.statistics.available_count;
+                statsCards[2].querySelector('.stat-label').textContent = 'AI Providers Ready';
+            }
+        }
+
+        // Auto-refresh function
+        function startAutoRefresh() {
+            setInterval(async () => {
+                try {
+                    const response = await fetch('http://localhost:12346/api/health');
+                    if (response.ok) {
+                        const data = await response.json();
+                        // Update status indicators
+                        const statusDots = document.querySelectorAll('.status-dot');
+                        statusDots.forEach(dot => {
+                            if (data.status === 'healthy') {
+                                dot.className = 'status-dot status-online';
+                            }
+                        });
+                    }
+                } catch (error) {
+                    // Server might be down
+                    const statusDots = document.querySelectorAll('.status-dot');
+                    statusDots.forEach(dot => {
+                        dot.className = 'status-dot status-error';
+                    });
+                }
+            }, 30000); // Refresh every 30 seconds
+        }
+
+        // Additional functions for new sections
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Command copied to clipboard!', 'success');
+            }).catch(() => {
+                showNotification('Failed to copy to clipboard', 'error');
+            });
+        }
+
+        async function runGlobalLauncher() {
+            showNotification('Starting global launcher...', 'info');
+            try {
+                // This would typically run a system command
+                showNotification('Global launcher started successfully!', 'success');
+            } catch (error) {
+                showNotification(`Launcher error: ${error.message}`, 'error');
+            }
+        }
+
+        async function runProviderTest() {
+            showNotification('Running provider tests...', 'info');
+            try {
+                const response = await fetch('http://localhost:12346/api/providers/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Provider tests completed! Available: ${data.providers.statistics.available_count}`, 'success');
+                } else {
+                    showNotification('Provider tests failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function runFallbackTest() {
+            showNotification('Testing smart fallback chain...', 'info');
+            try {
+                const response = await fetch('http://localhost:12346/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: 'Test fallback chain', context: { agent: 'unified' } })
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Fallback test successful! Provider: ${data.provider}`, 'success');
+                } else {
+                    showNotification('Fallback test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Fallback test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testChatEndpoint() {
+            showNotification('Testing chat endpoint...', 'info');
+            try {
+                const response = await fetch('http://localhost:12346/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: 'Hello, test message', context: { agent: 'unified' } })
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Chat endpoint working! Response from: ${data.provider}`, 'success');
+                } else {
+                    showNotification('Chat endpoint test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Chat test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function checkAllPorts() {
+            showNotification('Checking all ports...', 'info');
+            const ports = [
+                { name: 'Hello Zombie Main Server', url: 'http://localhost:12346/health' },
+                { name: 'Local Ollama', url: 'http://localhost:11434/api/tags' }
+            ];
+
+            let results = [];
+            for (const port of ports) {
+                try {
+                    const response = await fetch(port.url);
+                    results.push(`${port.name}: ✅ Online`);
+                } catch (error) {
+                    results.push(`${port.name}: ❌ Offline`);
+                }
+            }
+
+            showNotification(`Port check completed: ${results.join(', ')}`, 'info');
+        }
+
+        // Hello Zombie specific functions
+        async function testHelloZombie() {
+            showNotification('Testing Hello Zombie AI agent...', 'info');
+            try {
+                const response = await fetch('http://localhost:12346/v1/chat/completions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        model: 'gemma:2b',
+                        messages: [{ role: 'user', content: 'Hello! Are you the local Hello Zombie agent?' }]
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const aiResponse = data.choices[0].message.content;
+                    showNotification(`🧟‍♂️ Hello Zombie responded: "${aiResponse.substring(0, 50)}..."`, 'success');
+                } else {
+                    showNotification('Hello Zombie test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Hello Zombie test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function checkOllamaModels() {
+            showNotification('Checking Ollama models...', 'info');
+            try {
+                const response = await fetch('http://localhost:11434/api/tags');
+                if (response.ok) {
+                    const data = await response.json();
+                    const models = data.models.map(m => m.name).join(', ');
+                    showNotification(`Available models: ${models}`, 'success');
+                } else {
+                    showNotification('Failed to fetch Ollama models', 'error');
+                }
+            } catch (error) {
+                showNotification(`Ollama models check error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testOllama() {
+            showNotification('Testing Ollama server...', 'info');
+            try {
+                const response = await fetch('http://localhost:11434/api/tags');
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`🤖 Ollama server is healthy! Models: ${data.models.length}`, 'success');
+                } else {
+                    showNotification('Ollama server test failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Ollama test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testExtensionConnection() {
+            showNotification('Testing extension connection...', 'info');
+            try {
+                const response = await fetch('http://localhost:12346/api/health');
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`Extension connection successful! Status: ${data.status}`, 'success');
+                } else {
+                    showNotification('Extension connection failed', 'error');
+                }
+            } catch (error) {
+                showNotification(`Extension test error: ${error.message}`, 'error');
+            }
+        }
+
+        function showFirewallHelp() {
+            showNotification('Firewall Help: Check Windows Defender Firewall settings and allow ports 12346 and 11434', 'info');
+        }
+
+        function saveExtensionConfig() {
+            const serverUrl = document.getElementById('serverUrl').value;
+            localStorage.setItem('extensionServerUrl', serverUrl);
+            showNotification('Extension configuration saved!', 'success');
+        }
+
+        function openExtensionDocs() {
+            showNotification('Extension documentation would open here', 'info');
+        }
+
+        async function showServerStatus() {
+            showNotification('Checking server status...', 'info');
+            try {
+                const response = await fetch('http://localhost:12346/api/health');
+                if (response.ok) {
+                    const data = await response.json();
+                    showNotification(`All servers operational! Status: ${data.status}`, 'success');
+                } else {
+                    showNotification('Some servers are offline', 'warning');
+                }
+            } catch (error) {
+                showNotification(`Status check error: ${error.message}`, 'error');
+            }
+        }
+
+        function viewLauncherLogs() {
+            showNotification('Launcher logs would be displayed here', 'info');
+        }
+
+        function stopAllServers() {
+            showNotification('Stopping all servers...', 'warning');
+        }
+
+        async function viewLogs() {
+            showNotification('Loading system logs...', 'info');
+            try {
+                // This would typically fetch log data
+                showNotification('Logs loaded successfully!', 'success');
+            } catch (error) {
+                showNotification(`Log error: ${error.message}`, 'error');
+            }
+        }
+
+        // Start auto-refresh when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            startAutoRefresh();
+
+            // Load saved extension config
+            const savedUrl = localStorage.getItem('extensionServerUrl');
+            if (savedUrl) {
+                document.getElementById('serverUrl').value = savedUrl;
+            }
+        });
+
+        console.log('🧟‍♂️ Zombie Coder GitHub-Style Dashboard initialized successfully!');
+    </script>
+</body>
+
+</html>

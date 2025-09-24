@@ -1,0 +1,470 @@
+2025-09-24 18:26:15,599 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 18:26:17,069 - __mp_main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 18:26:17,158 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:17,339 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 18:26:17,345 - main_server - INFO - Starting Hello Zombie Main Server...
+2025-09-24 18:26:17,369 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 18:26:17,370 - main_server - INFO - Memory database initialized successfully
+2025-09-24 18:26:17,511 - watchfiles.main - INFO - 10 changes detected
+2025-09-24 18:26:17,879 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:18,238 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:18,491 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:26:18,525 - main_server - INFO - Ollama server is healthy
+2025-09-24 18:26:18,644 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:19,011 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:19,362 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:19,721 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:20,132 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:20,536 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:20,811 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:26:20,994 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:21,358 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:21,767 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:22,182 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:22,602 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:22,972 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:23,384 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:23,792 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:24,212 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:24,622 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:25,042 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:25,461 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:25,816 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:26,283 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:26,691 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:27,096 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:27,500 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:27,908 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:28,312 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:28,668 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:29,073 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:29,482 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:30,367 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:30,721 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:31,132 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:31,542 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:31,953 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:32,371 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:32,785 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:33,188 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:33,601 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:34,012 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:34,376 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:34,832 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:35,257 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:35,672 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:36,082 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:36,486 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:36,841 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:37,302 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:37,722 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:38,132 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:38,547 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:38,956 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:39,309 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:39,722 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:40,182 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:40,543 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:40,952 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:41,363 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:41,768 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:42,123 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:42,535 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:42,951 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:43,356 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:43,772 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:44,175 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:44,576 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:44,981 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:45,401 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:45,863 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:46,272 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:46,631 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:47,042 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:47,453 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:47,868 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:48,275 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:48,726 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:49,089 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:49,552 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:49,961 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:50,366 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:50,722 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:51,142 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:51,561 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:51,971 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:52,382 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:52,788 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:53,161 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:53,565 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:53,972 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:54,332 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:54,788 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:55,200 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:55,612 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:56,033 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:56,391 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:56,804 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:57,222 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:57,631 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:58,001 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:58,462 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:58,867 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:59,230 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:26:59,682 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:00,048 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:00,462 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:00,867 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:01,282 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:01,688 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:02,055 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:02,471 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:02,891 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:03,258 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:03,661 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:04,075 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:04,484 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:04,902 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:05,312 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:05,728 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:06,092 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:06,506 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:06,959 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:07,374 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:07,793 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:08,202 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:08,622 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:09,031 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:09,446 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:09,800 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:10,263 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:10,669 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:11,086 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:11,488 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:11,891 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:12,296 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:12,709 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:13,081 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:13,490 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:13,901 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:14,305 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:14,715 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:15,118 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:15,524 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:15,888 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:16,326 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:16,774 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:17,175 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:17,579 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:17,943 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:18,353 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:18,766 - watchfiles.main - INFO - 1 change detected
+2025-09-24 18:27:30,667 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 18:27:30,763 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 18:27:30,771 - main_server - INFO - Starting Hello Zombie Main Server...
+2025-09-24 18:27:30,777 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 18:27:30,778 - main_server - INFO - Memory database initialized successfully
+2025-09-24 18:27:31,510 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:27:31,513 - main_server - INFO - Ollama server is healthy
+2025-09-24 18:27:38,393 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:27:42,033 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:27:45,816 - main_server - INFO - Processing chat request: conv_20250924_182745_606
+2025-09-24 18:27:53,548 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 18:27:53,614 - main_server - INFO - Conversation saved: conv_20250924_182745_606
+2025-09-24 18:28:34,504 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:28:37,313 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:28:39,345 - main_server - INFO - Processing chat request: conv_20250924_182839_757
+2025-09-24 18:28:50,918 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 18:28:50,936 - main_server - INFO - Conversation saved: conv_20250924_182839_757
+2025-09-24 18:44:06,696 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:44:07,881 - main_server - INFO - Processing chat request: conv_20250924_184407_2891
+2025-09-24 18:44:20,177 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 18:44:20,195 - main_server - INFO - Conversation saved: conv_20250924_184407_2891
+2025-09-24 18:45:12,856 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:17,865 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:23,209 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:27,860 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:33,554 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:37,971 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:43,065 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:47,938 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:52,926 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:45:57,923 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:02,941 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:06,576 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:07,964 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:11,582 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:13,032 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:16,472 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:17,952 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:21,445 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:26,592 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:31,467 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:36,432 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:41,482 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:46,387 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:50,005 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:51,497 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:46:56,929 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:01,836 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:07,002 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:11,934 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:16,393 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:21,378 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:27,157 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:32,058 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:36,927 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:42,033 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:46,956 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:49,916 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:51,945 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:47:57,395 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:01,846 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:06,938 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:12,016 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:16,936 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:21,992 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:50,248 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:51,008 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:48:52,055 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:49:27,192 - main_server - INFO - Processing chat request: conv_20250924_184927_2891
+2025-09-24 18:49:36,705 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 18:49:36,792 - main_server - INFO - Conversation saved: conv_20250924_184927_2891
+2025-09-24 18:49:50,226 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:49:51,035 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:49:51,751 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:50:50,282 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:50:50,946 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:50:51,792 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:03,313 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:08,240 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:13,195 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:18,246 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:23,279 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:28,393 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:33,276 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:38,225 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:43,223 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:48,144 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:49,892 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:50,540 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:51,294 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:52,507 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:53,203 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:54,056 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:51:59,041 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:52:04,016 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:52:08,922 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:52:13,869 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:52:19,346 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:52:23,930 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:52:29,063 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:52:34,079 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:57:02,087 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 18:57:02,267 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 18:57:02,298 - main_server - INFO - Starting Hello Zombie Main Server...
+2025-09-24 18:57:02,301 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 18:57:02,305 - main_server - INFO - Memory database initialized successfully
+2025-09-24 18:57:04,136 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:57:04,137 - main_server - INFO - Ollama server is healthy
+2025-09-24 18:57:50,277 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:57:51,404 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:57:51,407 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:57:52,188 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:57:53,004 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:31,142 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:33,261 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:38,273 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:43,942 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:48,898 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:49,953 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:50,914 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:51,611 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:53,367 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:58:58,316 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:59:11,415 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:59:12,183 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:59:12,975 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:59:15,549 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 18:59:16,545 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:02:14,973 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:02:14,996 - main_server - INFO - Processing chat request: conv_20250924_190214_7815
+2025-09-24 19:02:24,984 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 19:02:24,992 - main_server - INFO - Conversation saved: conv_20250924_190214_7815
+2025-09-24 19:04:23,773 - main_server - INFO - Processing chat request: conv_20250924_190423_6969
+2025-09-24 19:04:45,565 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 19:04:45,581 - main_server - INFO - Conversation saved: conv_20250924_190423_6969
+2025-09-24 19:14:52,293 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:14:58,379 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:15:36,980 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:15:58,557 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:18:30,543 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:20:33,519 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 19:20:33,617 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 19:20:33,625 - main_server - INFO - Starting Hello Zombie Main Server...
+2025-09-24 19:20:33,627 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 19:20:33,627 - main_server - INFO - Memory database initialized successfully
+2025-09-24 19:20:34,418 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:20:34,420 - main_server - INFO - Ollama server is healthy
+2025-09-24 19:20:41,791 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:23:37,977 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:29:45,703 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 19:29:45,851 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 19:29:45,865 - main_server - INFO - Starting Hello Zombie Main Server...
+2025-09-24 19:29:45,869 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 19:29:45,870 - main_server - INFO - Memory database initialized successfully
+2025-09-24 19:29:47,010 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:29:47,012 - main_server - INFO - Ollama server is healthy
+2025-09-24 19:29:52,508 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:29:56,622 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_192956_9413
+2025-09-24 19:30:09,163 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 19:30:09,181 - main_server - INFO - Conversation saved: openai_20250924_192956_9413
+2025-09-24 19:41:13,169 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:41:17,424 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_194117_7950
+2025-09-24 19:41:27,756 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 19:41:27,773 - main_server - INFO - Conversation saved: openai_20250924_194117_7950
+2025-09-24 19:44:52,850 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:44:52,889 - main_server - INFO - Processing chat request: conv_20250924_194452_8240
+2025-09-24 19:45:04,619 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 19:45:04,625 - main_server - INFO - Conversation saved: conv_20250924_194452_8240
+2025-09-24 19:47:49,140 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 19:47:49,427 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 19:47:49,481 - main_server - INFO - Starting Hello Zombie Main Server with optimizations...
+2025-09-24 19:47:49,483 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 19:47:49,484 - main_server - INFO - Memory database initialized successfully
+2025-09-24 19:47:50,922 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:47:50,930 - main_server - INFO - Ollama server is healthy
+2025-09-24 19:47:50,932 - main_server - INFO - Created new DB connection for thread 5428
+2025-09-24 19:47:50,937 - main_server - INFO - Performance optimizations enabled:
+2025-09-24 19:47:50,938 - main_server - INFO -   - Response caching: 1000 max entries, 3600s TTL
+2025-09-24 19:47:50,939 - main_server - INFO -   - Database connection pooling: 10 max connections
+2025-09-24 19:47:50,946 - main_server - INFO -   - Automatic cleanup: 30 days retention
+2025-09-24 19:48:04,616 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_194804_2193
+2025-09-24 19:48:35,750 - main_server - ERROR - Ollama API timeout
+2025-09-24 19:48:37,859 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_194837_2193
+2025-09-24 19:49:08,674 - main_server - ERROR - Ollama API timeout
+2025-09-24 19:50:48,978 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:52:24,517 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:52:29,036 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 19:52:50,446 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_195250_991
+2025-09-24 19:52:56,372 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 19:52:56,374 - main_server - INFO - Cached response for key: 504fb868...
+2025-09-24 19:52:56,374 - main_server - INFO - OpenAI response generated in 5.93s for: openai_20250924_195250_991
+2025-09-24 19:52:56,390 - main_server - INFO - Conversation saved: openai_20250924_195250_991
+2025-09-24 19:56:23,348 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_195623_5656
+2025-09-24 19:56:34,376 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 19:56:34,377 - main_server - INFO - Cached response for key: c4da33fa...
+2025-09-24 19:56:34,386 - main_server - INFO - OpenAI response generated in 11.01s for: openai_20250924_195623_5656
+2025-09-24 19:56:34,473 - main_server - INFO - Conversation saved: openai_20250924_195623_5656
+2025-09-24 20:04:57,536 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:04:57,658 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:04:57,672 - main_server - INFO - Starting Hello Zombie Main Server with optimizations...
+2025-09-24 20:04:57,674 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 20:04:57,674 - main_server - INFO - Memory database initialized successfully
+2025-09-24 20:04:58,456 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:04:58,457 - main_server - INFO - Ollama server is healthy
+2025-09-24 20:04:58,458 - main_server - INFO - Created new DB connection for thread 12748
+2025-09-24 20:04:58,460 - main_server - INFO - Performance optimizations enabled:
+2025-09-24 20:04:58,462 - main_server - INFO -   - Response caching: 1000 max entries, 3600s TTL
+2025-09-24 20:04:58,463 - main_server - INFO -   - Database connection pooling: 10 max connections
+2025-09-24 20:04:58,463 - main_server - INFO -   - Automatic cleanup: 30 days retention
+2025-09-24 20:05:02,286 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:05:08,793 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_200508_1568
+2025-09-24 20:05:20,550 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 20:05:20,552 - main_server - INFO - Cached response for key: bd6dd372...
+2025-09-24 20:05:20,552 - main_server - INFO - OpenAI response generated in 11.76s for: openai_20250924_200508_1568
+2025-09-24 20:05:20,568 - main_server - INFO - Conversation saved: openai_20250924_200508_1568
+2025-09-24 20:07:24,493 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_200724_8951
+2025-09-24 20:07:31,363 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 20:07:31,364 - main_server - INFO - Cached response for key: 17ed1c51...
+2025-09-24 20:07:31,365 - main_server - INFO - OpenAI response generated in 6.87s for: openai_20250924_200724_8951
+2025-09-24 20:07:31,380 - main_server - INFO - Conversation saved: openai_20250924_200724_8951
+2025-09-24 20:18:44,057 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:19:11,013 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:19:43,784 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:19:43,955 - main_server - INFO - Processing chat request: conv_20250924_201943_4492
+2025-09-24 20:19:57,264 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 20:19:57,265 - main_server - INFO - Cached response for key: ac6e04ca...
+2025-09-24 20:19:57,280 - main_server - INFO - Conversation saved: conv_20250924_201943_4492
+2025-09-24 20:19:57,280 - main_server - INFO - Response generated in 13.31s for: conv_20250924_201943_4492
+2025-09-24 20:20:07,991 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:22:21,973 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_202221_2405
+2025-09-24 20:22:28,825 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 20:22:28,827 - main_server - INFO - Cached response for key: 016c0051...
+2025-09-24 20:22:28,828 - main_server - INFO - OpenAI response generated in 6.85s for: openai_20250924_202221_2405
+2025-09-24 20:22:28,846 - main_server - INFO - Conversation saved: openai_20250924_202221_2405
+2025-09-24 20:23:06,304 - main_server - INFO - Cache hit for key: ac6e04ca...
+2025-09-24 20:23:06,304 - main_server - INFO - Returning cached response for: conv_20250924_202306_4492
+2025-09-24 20:23:06,463 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:24:50,107 - main_server - INFO - Cache hit for key: 016c0051...
+2025-09-24 20:24:50,108 - main_server - INFO - Returning cached OpenAI response for: openai_20250924_202450_2405
+2025-09-24 20:24:50,124 - main_server - INFO - Conversation saved: openai_20250924_202450_2405
+2025-09-24 20:24:58,816 - main_server - INFO - Cache hit for key: 016c0051...
+2025-09-24 20:24:58,816 - main_server - INFO - Returning cached OpenAI response for: openai_20250924_202458_2405
+2025-09-24 20:24:58,833 - main_server - INFO - Conversation saved: openai_20250924_202458_2405
+2025-09-24 20:26:18,540 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:29:43,544 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_202943_7082
+2025-09-24 20:29:57,942 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 20:29:57,945 - main_server - INFO - Cached response for key: d4c6b774...
+2025-09-24 20:29:57,947 - main_server - INFO - OpenAI response generated in 14.40s for: openai_20250924_202943_7082
+2025-09-24 20:29:57,952 - main_server - INFO - Conversation saved: openai_20250924_202943_7082
+2025-09-24 20:34:07,292 - main_server - INFO - Cache hit for key: d4c6b774...
+2025-09-24 20:34:07,297 - main_server - INFO - Returning cached OpenAI response for: openai_20250924_203407_7082
+2025-09-24 20:34:07,302 - main_server - INFO - Conversation saved: openai_20250924_203407_7082
+2025-09-24 20:34:14,792 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_203414_575
+2025-09-24 20:34:23,515 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-24 20:34:23,517 - main_server - INFO - Cached response for key: 089f737d...
+2025-09-24 20:34:23,518 - main_server - INFO - OpenAI response generated in 8.72s for: openai_20250924_203414_575
+2025-09-24 20:34:23,534 - main_server - INFO - Conversation saved: openai_20250924_203414_575
+2025-09-24 20:48:22,841 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:48:22,842 - __main__ - INFO - Loaded ZombieCoder meta memory: ZombieCoder
+2025-09-24 20:48:22,935 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:48:22,936 - main_server - INFO - Loaded ZombieCoder meta memory: ZombieCoder
+2025-09-24 20:48:22,955 - main_server - INFO - Starting Hello Zombie Main Server with optimizations...
+2025-09-24 20:48:22,962 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 20:48:22,962 - main_server - INFO - Memory database initialized successfully
+2025-09-24 20:48:23,954 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:48:23,955 - main_server - INFO - Ollama server is healthy
+2025-09-24 20:48:23,956 - main_server - INFO - Created new DB connection for thread 13600
+2025-09-24 20:48:23,956 - main_server - INFO - Performance optimizations enabled:
+2025-09-24 20:48:23,957 - main_server - INFO -   - Response caching: 1000 max entries, 3600s TTL
+2025-09-24 20:48:23,957 - main_server - INFO -   - Database connection pooling: 10 max connections
+2025-09-24 20:48:23,957 - main_server - INFO -   - Automatic cleanup: 30 days retention
+2025-09-24 20:50:04,845 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:50:04,846 - __main__ - INFO - Loaded ZombieCoder meta memory: ZombieCoder
+2025-09-24 20:50:04,983 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:50:04,984 - main_server - INFO - Loaded ZombieCoder meta memory: ZombieCoder
+2025-09-24 20:50:04,996 - main_server - INFO - Starting Hello Zombie Main Server with optimizations...
+2025-09-24 20:50:05,000 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 20:50:05,001 - main_server - INFO - Memory database initialized successfully
+2025-09-24 20:50:05,838 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:50:05,840 - main_server - INFO - Ollama server is healthy
+2025-09-24 20:50:05,841 - main_server - INFO - Created new DB connection for thread 6808
+2025-09-24 20:50:05,842 - main_server - INFO - Performance optimizations enabled:
+2025-09-24 20:50:05,842 - main_server - INFO -   - Response caching: 1000 max entries, 3600s TTL
+2025-09-24 20:50:05,842 - main_server - INFO -   - Database connection pooling: 10 max connections
+2025-09-24 20:50:05,843 - main_server - INFO -   - Automatic cleanup: 30 days retention
+2025-09-24 20:50:08,038 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_205008_3551
+2025-09-24 20:50:38,823 - main_server - ERROR - Ollama API timeout
+2025-09-24 20:50:52,943 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:51:08,590 - main_server - INFO - Processing OpenAI compatible request: openai_20250924_205108_5546
+2025-09-24 20:51:39,656 - main_server - ERROR - Ollama API timeout
+2025-09-24 20:55:08,419 - __main__ - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:55:08,419 - __main__ - INFO - Loaded ZombieCoder meta memory: ZombieCoder
+2025-09-24 20:55:08,515 - main_server - INFO - Loaded agent config: Hello Zombie
+2025-09-24 20:55:08,516 - main_server - INFO - Loaded ZombieCoder meta memory: ZombieCoder
+2025-09-24 20:55:08,526 - main_server - INFO - Starting Hello Zombie Main Server with optimizations...
+2025-09-24 20:55:08,527 - main_server - INFO - Memory database initialized at data/memory/hello_zombie_memory.sqlite
+2025-09-24 20:55:08,527 - main_server - INFO - Memory database initialized successfully
+2025-09-24 20:55:09,241 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:55:09,243 - main_server - INFO - Ollama server is healthy
+2025-09-24 20:55:09,244 - main_server - INFO - Created new DB connection for thread 14224
+2025-09-24 20:55:09,246 - main_server - INFO - Performance optimizations enabled:
+2025-09-24 20:55:09,246 - main_server - INFO -   - Response caching: 1000 max entries, 3600s TTL
+2025-09-24 20:55:09,247 - main_server - INFO -   - Database connection pooling: 10 max connections
+2025-09-24 20:55:09,247 - main_server - INFO -   - Automatic cleanup: 30 days retention
+2025-09-24 20:59:11,090 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 20:59:11,099 - main_server - INFO - Processing chat request: conv_20250924_205911_3512
+2025-09-24 20:59:42,167 - main_server - ERROR - Ollama API timeout
+2025-09-24 21:03:58,895 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-24 21:28:37,829 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
